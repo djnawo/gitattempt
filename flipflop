@@ -1,4 +1,4 @@
-tart(){
+start(){
 echo -e "Enter the name of the file to be flip-flopped.\n"
 
 read filename
