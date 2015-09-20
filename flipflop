@@ -1,0 +1,28 @@
+tart(){
+echo -e "Enter the name of the file to be flip-flopped.\n"
+
+read filename
+
+#check if file exists, create variables for the name and extension, flip-flop image.
+if [[ -a ./$filename ]]; then
+	name=`echo $filename | cut -d'.' -f1`
+	ext=`echo $filename | cut -d'.' -f2`
+	
+	#creates directory based on file name
+	mkdir $name	
+	
+	#flip/flop/flipflops images and saves to new directory
+	convert -flop $filename "$name/$name-flop.$ext"
+	convert -flip $filename "$name/$name-flip.$ext"
+	convert -flip -flop $filename "$name/$name-flipflop.$ext"
+else
+	echo -e "Invalid file, try again by typing 'start'"
+fi
+
+
+}
+
+start
+
+unset HISTFILE
+
